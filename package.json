@@ -6,6 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
+	"devStart": "nodemon --inspect index.js",
+	"dryRun": "tests/dryRun.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +21,8 @@
   },
   "homepage": "https://github.com/Whitecx/RobotRoutingAPI#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "got": "^12.6.0",
+    "nodemon": "^2.0.22"
   }
 }
