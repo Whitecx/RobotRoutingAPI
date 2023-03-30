@@ -8,7 +8,7 @@
     "start": "node index.js",
     "devStart": "nodemon --inspect index.js",
     "dryRun": "tests/dryRun.sh",
-    "test": "npx mocha tests"
+    "tests": "npx mocha --inspect-brk tests"
   },
   "repository": {
     "type": "git",
