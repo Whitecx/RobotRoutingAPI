@@ -22,10 +22,10 @@ Send a Post Request to localhost:5000/api/robots/closest w/ JSON data in this fo
 I considered that the way distance is computed may not accurately represent the distance a robot would actually
 travel to get to the load. If there are obstacles/barriers that the robot has to manuever through, then true
 distance would have to take into account the robot's planned path to get to the load. While all obstacles may
-not be known, it's possible that the API is loaded with a general map of the facility including walls and other
-fairly static obstructions. 
+not be known, it's possible that the API contains a general map of the facility including walls and other
+generally static obstructions. 
 
-Given the fairly low number of robots this service would be expected to parse through, finding improvements in
+Given the fairly low number of robots this service would be expected to evluate, finding improvements in
 determining the closest bot based on the criteria of this exercise likely wouldn't bring about any helpful
 improvements to the customer's experience; however, let's say that our calculation for determining the best
 bot to move a load used a heuristic based on the number of obstacles in the way, or a likely path the bot would
@@ -47,9 +47,9 @@ through ~100 robots and comparing coordinates is very fast. In comparison, it wo
 to equal a similar number of operations (A(r) = πr^2; A(6)=~100). For the following example I use a few estimates,
 but without running tests on hardware we won't get an exact sense of completion time.
 
-For our worst case scenario, we can imagine a load on one end of a map, with the closest bot being the farthest 
+For our worst case scenario, we can imagine a load on one end of a map, with the closest bot being at the farthest 
 possible point. In this case, the radius would span the length of the map. Let’s say for a square facility 
-(1000x1000), with load and robot placed at opposite corners, we’d have a max distance of ~1400 units. This would 
+(1000x1000), with load and robot placed at opposite corners. We’d have a max distance of ~1400 units. This would 
 also represent the max radius, giving the total unit spaces to check to be less than 6M (maybe around 1/4th of 
 this given much of the potential radius would be outside of the bounds of the map). Even with a large number, if 
 we represent this as a two dimensional array in which instances of our Robot fleet are placed, while we’d have a 
@@ -66,7 +66,7 @@ into 3 bots within a 5 unit radius. If we detect the first within about 500 unit
 worst 6s, and at best less than 1s to find the best bot (in this case we find a bot quickly and there are none 
 within the same radius to compare paths with). 
 
-Comparing this approach with the original of using straight line distance, the savings in time for choosing a bot with the shortest “actual” path could be substantial! Just imagine perceived distance being 20 units, but the 
+Comparing this approach with the original of using straight line distance, the savings in time for choosing a bot with the shortest “actual” path could be substantial! Just imagine a perceived distance being 20 units, but the 
 actual path distance being 35 units when accounting for obstacles. If a bot travels at 1 unit/s, then that 
 would make for a 15s difference in the estimate. 
 
@@ -75,7 +75,7 @@ would make for a 15s difference in the estimate.
 This might include the distance formula in this exercise, potential path, and number of obstacles. But, we
 might also find other data useful, such as battery life, estimated battery drain based on a predicted energy
 expenditure to move the load, or even the track record of the bot. These metrics may be combined into a 
-cumulative score to determine the bot's overall fitness for the job. Given the varying nature of this data,
+cumulative score to determine the bot's overall fitness for the job. Given the varying nature of this data, and
 it's availability, we might consider a resolution time target. If certain metrics in the score are too expensive
 to calculate it, our algorithm might opt for a more general estimate based on the amount of time that elapses from
 update to update as it polls /robots. This target resolution time would give flexibility to the quality of these
@@ -108,7 +108,7 @@ returned?
 
 5. How do we handle if the closest robots available have low battery? Should we choose a next closest even if it's farther?
 
-6. Would it be helpful to have a visual w/ a highlight of what robot was chosen?
+6. Would it be helpful to have a visual w/ a highlight of what robot was chosen for debugging?
 
 7. How would you know/handle if a robot is already on the move for another load?
 
