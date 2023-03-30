@@ -14,6 +14,7 @@ npm run dryRun -> curl command w/ test payload (same as ./tests/endToEndTest.js)
 
 Send a Post Request to localhost:5000/api/robots/closest w/ JSON data in this format:
 
+Note: Assumes xy coordinates are positive
 
 {"loadId": 1, "x": 0, "y", 0}
 
