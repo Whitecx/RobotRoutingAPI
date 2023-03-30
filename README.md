@@ -17,7 +17,7 @@ Send a Post Request to localhost:5000/api/robots/closest w/ JSON data in this fo
 
 {"loadId": 1, "x": 0, "y", 0}
 
-##Feature Wishlist:
+## Feature Wishlist:
 
 I considered that the way distance is computed may not accurately represent the distance a robot would actually
 travel to get to the load. If there are obstacles/barriers that the robot has to manuever through, then true
