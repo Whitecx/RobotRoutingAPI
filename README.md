@@ -95,4 +95,23 @@ approaches, wherein we choose the best approach based on capacity or perceived c
 depend on what works best taking into account both goals in autiomation and customer experience, as well as cost
 or approach given the current architecture and planned approaches. 
 
+## Other Questions to Inform Design
+
+ 1. How do robot's get recahrged - is there a discovery service in the connected api that determines which get 
+returned?
+
+2. What happens if there are a cluster of loads and multiple robots are needed?
+
+3. Is there known data on how expected travel distance affects battery life?
+
+4. How do we handle if there are no robots available?
+
+5. How do we handle if the closest robots available have low battery? Should we choose a next closest even if it's farther?
+
+6. Would it be helpful to have a visual w/ a highlight of what robot was chosen?
+
+7. How would you know/handle if a robot is already on the move for another load?
+
+
+
 
